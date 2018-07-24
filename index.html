@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <title>Just Another Search Engine</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <style>
+            .searchResult {
+                background-color: #eee;
+                color: inherit;
+                border: none;
+                padding: 10px 10px;
+            }
+            
+            .searchResult:hover {
+                background-color: #bbb;
+            }
+        </style>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script>
+        // function confirmInput() {
+        //     fname = document.forms[0].fname.value;
+        // }
+        </script>
+    </head>
+
+    <body>
+
+        <div class="jumbotron text-center">
+            <h1>Just Another Search Engine</h1>
+            <!-- <form class="form-inline" method="post"> -->
+                <input id = fname type="text" name="search" class="form-control" placeholder="Search" size="30%">
+                <!-- <input type="submit"> -->
+                <button name="test" onclick="search_es()" class="btn" style="background-color: #eeeeee;"><span class="glyphicon glyphicon-search"></span></button>
+            <!-- </form> -->
+        </div>
+        <script>
+            function search_es(){
+                console.log("jfhjd");
+                var xhr = new XMLHttpRequest();
+                var url = "http://127.0.0.1:5000/search";
+                xhr.open("POST", url, true);
+                xhr.setRequestHeader("Content-Type", "application/json");
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState === 4 && xhr.status === 200) {
+                        var json = JSON.parse(xhr.responseText);
+                    }
+                };
+                var data = JSON.stringify({"query": "cats"});
+                xhr.send(data);                
+            }
+        </script>
+        <table style="width:100%">
+		  <tr>
+		    <th>Query</th>
+		    <th>Result</th> 
+		    <th>Time Of Query</th>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		  </tr>
+		</table>
+    </body>
+
+</html>	
