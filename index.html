@@ -22,7 +22,7 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <script>
         // function confirmInput() {
-        //     fname = document.forms[0].fname.value;
+        //     fname = document.getElementByName("search")[0].value;
         // }
         </script>
     </head>
@@ -32,14 +32,16 @@
         <div class="jumbotron text-center">
             <h1>Just Another Search Engine</h1>
             <!-- <form class="form-inline" method="post"> -->
-                <input id = fname type="text" name="search" class="form-control" placeholder="Search" size="30%">
+                <input id = fname type="text" name="search" class="form-control" placeholder="Search" size="30%" >
                 <!-- <input type="submit"> -->
                 <button name="test" onclick="search_es()" class="btn" style="background-color: #eeeeee;"><span class="glyphicon glyphicon-search"></span></button>
+                <pre id = "res"></pre>
             <!-- </form> -->
         </div>
         <script>
             function search_es(){
                 console.log("jfhjd");
+                var query = document.getElementsByName("search")[0].value;
                 var xhr = new XMLHttpRequest();
                 var url = "http://127.0.0.1:5000/search";
                 xhr.open("POST", url, true);
@@ -47,94 +49,12 @@
                 xhr.onreadystatechange = function () {
                     if (xhr.readyState === 4 && xhr.status === 200) {
                         var json = JSON.parse(xhr.responseText);
+                        document.getElementById("res").innerHTML = xhr.responseText;
                     }
                 };
-                var data = JSON.stringify({"query": "cats"});
-                xhr.send(data);                
+                var data = JSON.stringify({"query": query});
+                xhr.send(data);        
             }
-        </script>
-        <table style="width:100%">
-		  <tr>
-		    <th>Query</th>
-		    <th>Result</th> 
-		    <th>Time Of Query</th>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-		  </tr>
-		</table>
+        </script>        
     </body>
-
 </html>	
